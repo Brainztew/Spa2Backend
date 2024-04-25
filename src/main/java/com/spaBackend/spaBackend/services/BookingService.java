@@ -64,7 +64,7 @@ public class BookingService {
 
     public boolean isHoliday(String date) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://sholiday.faboul.se/dagar/v2.1/2024";
+        String url = "https://sholiday.faboul.se/dagar/v2.1/2024";
         Map<String, List<Map<String, String>>> holidays = restTemplate.getForObject(url, Map.class);
         return holidays.get("dagar").stream().anyMatch(day -> day.get("datum").equals(date) && day.containsKey("helgdag"));
     }
